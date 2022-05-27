@@ -1,12 +1,13 @@
 import 'camera.dart';
-import 'console_canvas.dart';
+import 'image_canvas.dart';
 import 'quaternion.dart';
 import 'raytracer.dart';
 import 'sphere.dart';
 import 'vector_3.dart';
 
 void main(List<String> arguments) {
-  var canvas = ConsoleCanvas(
+  
+  var canvas = ImageCanvas(
     width: 1920,
     height: 1080,
   );
@@ -14,7 +15,9 @@ void main(List<String> arguments) {
   var camera = Camera(
     position: Vector3.zero(),
     rotation: Quaternion.identity(),
-    fieldOfView: 53,
+    viewportDepth: 1,
+    viewportWidth: 1,
+    viewportHeight: 1,
   );
 
   var objects = [

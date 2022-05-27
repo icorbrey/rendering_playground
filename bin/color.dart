@@ -1,3 +1,4 @@
+import 'package:image/image.dart' as img;
 import 'package:quiver/core.dart';
 
 class Color {
@@ -14,6 +15,9 @@ class Color {
     : assert(0 <= green && green <= 255),
       assert(0 <= blue && blue <= 255),
       assert(0 <= red && red <= 255);
+
+  int toInt() =>
+    img.getColor(red, green, blue);
 
   Color operator*(double other) => Color(
     green: other * green as int,

@@ -8,6 +8,7 @@ environment:
 
 dependencies:
   quiver:
+  image:
 
 dev_dependencies:
   lints: ^1.0.0
