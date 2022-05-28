@@ -24,22 +24,22 @@ void main(List<String> arguments) {
     ),
     objects: [
       Sphere(
-        position: Vector3.forward() * 4,
+        position: Vector3(0, -1, 3),
         rotation: Quaternion.identity(),
         color: Color.red(),
-        radius: 0.5,
+        radius: 1,
       ),
       Sphere(
-        position: Vector3.forward() * 5 + Vector3.left() + Vector3.down(),
+        position: Vector3(2, 0, 4),
         rotation: Quaternion.identity(),
         color: Color.green(),
-        radius: 0.5,
+        radius: 1,
       ),
       Sphere(
-        position: Vector3.forward() * 6 + Vector3.right() * 2 + Vector3.up() * 0.5,
+        position: Vector3(-2, 0, 4),
         rotation: Quaternion.identity(),
         color: Color.blue(),
-        radius: 0.5,
+        radius: 1,
       ),
     ],
   );
