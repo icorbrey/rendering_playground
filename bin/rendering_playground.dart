@@ -19,8 +19,8 @@ void main(List<String> arguments) {
       position: Vector3.zero(),
       rotation: Quaternion.identity(),
       viewportDepth: 1,
-      viewportWidth: 1,
-      viewportHeight: 1,
+      viewportWidth: 1.920,
+      viewportHeight: 1.080,
     ),
     objects: [
       Sphere(

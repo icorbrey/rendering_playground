@@ -11,9 +11,9 @@ class Camera extends SceneObject {
   @override Quaternion rotation;
   @override Color color;
 
-  final int viewportWidth;
-  final int viewportHeight;
-  final double viewportDepth;
+  final num viewportWidth;
+  final num viewportHeight;
+  final num viewportDepth;
 
   Camera({
     required this.position,

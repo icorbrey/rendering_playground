@@ -23,15 +23,15 @@ class Raytracer {
     for (var x = canvas.minX; x < canvas.maxX; x++) {
       for (var y = canvas.minY; y < canvas.maxY; y++) {
         var viewportCoord = _toViewportCoord(Vector2(x, y));
-        var color = _traceRay(viewportCoord);
-        canvas.paintPixel(x, y, color);
+        var object = _getClosestObject(viewportCoord);
+        canvas.paintPixel(x, y, object?.color ?? backgroundColor);
       }
     }
   }
 
-  Color _traceRay(Vector3 viewportIntersection) {
+  SceneObject? _getClosestObject(Vector3 viewportIntersection) {
 
-    num closestIntersection = 0;
+    num closestIntersection = double.infinity;
     SceneObject? closestObject;
 
     for (var object in objects) {
@@ -39,6 +39,8 @@ class Raytracer {
       var intersections = object.intersect(camera.position, viewportIntersection);
       var near = intersections.item1;
       var far = intersections.item2;
+
+      
 
       if (_isInRange(near) && near < closestIntersection) {
         closestIntersection = near;
@@ -51,7 +53,7 @@ class Raytracer {
       }
     }
 
-    return closestObject?.color ?? backgroundColor;
+    return closestObject;
   }
 
   Vector3 _toViewportCoord(Vector2 canvasCoord) => Vector3(
