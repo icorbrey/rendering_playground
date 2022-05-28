@@ -9,6 +9,7 @@ environment:
 dependencies:
   quiver:
   image:
+  tuple:
 
 dev_dependencies:
   lints: ^1.0.0

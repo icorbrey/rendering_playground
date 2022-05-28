@@ -5,11 +5,11 @@ import 'vector_3.dart';
 
 class EulerAngles extends Vector3 {
 
-  double get roll => x;
-  double get pitch => y;
-  double get yaw => z;
+  num get roll => x;
+  num get pitch => y;
+  num get yaw => z;
 
-  EulerAngles(double roll, double pitch, double yaw)
+  EulerAngles(num roll, num pitch, num yaw)
     : super(roll, pitch, yaw);
 
   factory EulerAngles.fromQuaternion(Quaternion q) {

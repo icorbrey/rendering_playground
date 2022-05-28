@@ -2,9 +2,9 @@ import 'dart:math';
 
 class Vector3 {
 
-  final double x;
-  final double y;
-  final double z;
+  final num x;
+  final num y;
+  final num z;
 
   const Vector3(this.x, this.y, this.z);
 
@@ -35,10 +35,13 @@ class Vector3 {
   Vector3 operator-(Vector3 other) =>
     Vector3(x - other.x, y - other.y, z - other.z);
 
-  double get squareMagnitude =>
-    pow(x, 2) + pow(y, 2) + pow(z, 2) as double;
+  num operator^(Vector3 other) =>
+    x * other.x + y * other.y + z * other.z;
 
-  double get magnitude =>
+  num get squareMagnitude =>
+    pow(x, 2) + pow(y, 2) + pow(z, 2);
+
+  num get magnitude =>
     sqrt(squareMagnitude);
 
   Vector3 get normalized =>

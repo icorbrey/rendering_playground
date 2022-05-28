@@ -1,7 +1,7 @@
-import 'dart:math';
+import 'package:tuple/tuple.dart';
 
+import 'color.dart';
 import 'quaternion.dart';
-import 'rect.dart';
 import 'scene_object.dart';
 import 'vector_3.dart';
 
@@ -9,45 +9,22 @@ class Camera extends SceneObject {
 
   @override Vector3 position;
   @override Quaternion rotation;
+  @override Color color;
 
-  final Rect viewport;
+  final int viewportWidth;
+  final int viewportHeight;
   final double viewportDepth;
 
-  factory Camera({
-    required Vector3 position,
-    required Quaternion rotation,
-    required double viewportDepth,
-    required int viewportWidth,
-    required int viewportHeight,
-  }) {
-
-    var _eulerAngles = rotation.eulerAngles;
-
-    var _offsetUnit = Vector3(
-      cos(_eulerAngles.pitch) * cos(_eulerAngles.yaw),
-      cos(_eulerAngles.pitch) * sin(_eulerAngles.yaw),
-      sin(_eulerAngles.pitch),
-    );
-
-    var _viewport = Rect(
-      rotation: rotation,
-      width: viewportWidth as double,
-      height: viewportHeight as double,
-      position: position + _offsetUnit * viewportDepth,
-    );
-
-    return Camera._(
-      position: position,
-      rotation: rotation,
-      viewport: _viewport,
-      viewportDepth: viewportDepth,
-    );
-  }
-
-  Camera._({
+  Camera({
     required this.position,
     required this.rotation,
-    required this.viewport,
     required this.viewportDepth,
-  });
+    required this.viewportWidth,
+    required this.viewportHeight,
+  })
+    : color = Color.black();
+
+  @override
+  Tuple2<num, num> intersect(Vector3 origin, Vector3 viewportIntersection) =>
+    Tuple2(double.infinity, double.infinity);
 }

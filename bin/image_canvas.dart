@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:image/image.dart' as img;
 
 import 'canvas.dart';
@@ -8,10 +10,10 @@ class ImageCanvas implements Canvas {
   @override final int width;
   @override final int height;
 
-  @override int get maxX => width / 2 as int;
-  @override int get minX => -width / 2 as int;
-  @override int get maxY => height / 2 as int;
-  @override int get minY => -height / 2 as int;
+  @override int get maxX => width ~/ 2;
+  @override int get minX => -width ~/ 2;
+  @override int get maxY => height ~/ 2;
+  @override int get minY => -height ~/ 2;
 
   final img.Image _image;
 
@@ -38,9 +40,12 @@ class ImageCanvas implements Canvas {
     img.drawPixel(_image, _x, _y, _color);
   }
 
-  int _toCanvasX(int x) =>
-    (width / 2 as int) + x;
+  void export(String path) async =>
+    await File(path).writeAsBytes(img.encodePng(image));
 
-  int _toCanvasY(int y) =>
-    (height / 2 as int) - y;
+  int _toCanvasX(num x) =>
+    ((width / 2) + x).toInt();
+
+  int _toCanvasY(num y) =>
+    ((height / 2) - y).toInt();
 }

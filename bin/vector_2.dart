@@ -2,8 +2,8 @@ import 'dart:math';
 
 class Vector2 {
 
-  final double x;
-  final double y;
+  final num x;
+  final num y;
 
   const Vector2(this.x, this.y);
 
@@ -32,10 +32,13 @@ class Vector2 {
   Vector2 operator-(Vector2 other) =>
     Vector2(x - other.x, y - other.y);
 
-  double get squareMagnitude =>
-    pow(x, 2) + pow(y, 2) as double;
+  num operator^(Vector2 other) =>
+    x * other.x + y * other.y;
 
-  double get magnitude =>
+  num get squareMagnitude =>
+    pow(x, 2) + pow(y, 2);
+
+  num get magnitude =>
     sqrt(squareMagnitude);
 
   Vector2 get normalized =>
