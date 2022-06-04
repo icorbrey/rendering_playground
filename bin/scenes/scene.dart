@@ -1,5 +1,5 @@
+import '../lights/scene_light.dart';
 import '../objects/camera.dart';
-import '../objects/scene_light.dart';
 import '../objects/scene_object.dart';
 import '../rendering/canvas.dart';
 

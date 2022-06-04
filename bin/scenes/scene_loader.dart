@@ -2,11 +2,11 @@ import 'dart:io';
 
 import 'package:yaml/yaml.dart';
 
-import '../objects/ambient_light.dart';
+import '../lights/ambient_light.dart';
+import '../lights/directional_light.dart';
+import '../lights/point_light.dart';
+import '../lights/scene_light.dart';
 import '../objects/camera.dart';
-import '../objects/directional_light.dart';
-import '../objects/point_light.dart';
-import '../objects/scene_light.dart';
 import '../objects/scene_object.dart';
 import '../objects/sphere.dart';
 import '../rendering/image_canvas.dart';
