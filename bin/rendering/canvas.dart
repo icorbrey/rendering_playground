@@ -1,4 +1,4 @@
-import 'color.dart';
+import '../structs/color.dart';
 
 abstract class Canvas {
 

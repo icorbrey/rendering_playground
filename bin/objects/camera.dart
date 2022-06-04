@@ -1,6 +1,6 @@
 import 'package:tuple/tuple.dart';
 
-import 'color.dart';
+import 'structs/color.dart';
 import 'quaternion.dart';
 import 'scene_object.dart';
 import 'vector_3.dart';

@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:image/image.dart' as img;
 
 import 'canvas.dart';
-import 'color.dart';
+import '../structs/color.dart';
 
 class ImageCanvas implements Canvas {
 

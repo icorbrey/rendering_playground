@@ -1,10 +1,10 @@
-import 'camera.dart';
-import 'color.dart';
-import 'image_canvas.dart';
-import 'quaternion.dart';
-import 'raytracer.dart';
-import 'sphere.dart';
-import 'vector_3.dart';
+import 'objects/camera.dart';
+import 'objects/sphere.dart';
+import 'rendering/image_canvas.dart';
+import 'rendering/raytracer.dart';
+import 'structs/color.dart';
+import 'structs/quaternion.dart';
+import 'structs/vector_3.dart';
 
 void main(List<String> arguments) {
   

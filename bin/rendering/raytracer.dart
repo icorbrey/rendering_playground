@@ -1,9 +1,9 @@
-import 'camera.dart';
 import 'canvas.dart';
-import 'color.dart';
-import 'scene_object.dart';
-import 'vector_2.dart';
-import 'vector_3.dart';
+import '../objects/camera.dart';
+import '../objects/scene_object.dart';
+import '../structs/color.dart';
+import '../structs/vector_2.dart';
+import '../structs/vector_3.dart';
 
 class Raytracer {
 

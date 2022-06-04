@@ -1,8 +1,8 @@
 import 'package:tuple/tuple.dart';
 
-import 'color.dart';
-import 'quaternion.dart';
-import 'vector_3.dart';
+import '../structs/color.dart';
+import '../structs/quaternion.dart';
+import '../structs/vector_3.dart';
 
 abstract class SceneObject {
 

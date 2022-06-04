@@ -1,5 +1,5 @@
 import 'canvas.dart';
-import 'color.dart';
+import '../structs/color.dart';
 
 class ConsoleCanvas implements Canvas {
 

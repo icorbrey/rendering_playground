@@ -2,10 +2,10 @@ import 'dart:math';
 
 import 'package:tuple/tuple.dart';
 
-import 'color.dart';
-import 'quaternion.dart';
+import '../structs/color.dart';
+import '../structs/quaternion.dart';
+import '../structs/vector_3.dart';
 import 'scene_object.dart';
-import 'vector_3.dart';
 
 class Sphere extends SceneObject {
 
