@@ -27,10 +27,7 @@ class DirectionalLight extends SceneLight {
 
     var normal = object.getNormal(intersection);
 
-    if (0 < normal ^ direction) {
-      return intensity * (normal ^ direction) / (normal.magnitude * direction.magnitude);
-    } 
-
-    return 0;
+    return getDiffusionIntensity(normal, direction)
+      + getSpecularIntensity(object.shader, normal, direction, direction * -1);
   }
 }

@@ -2,14 +2,14 @@ import 'dart:math';
 
 import 'package:tuple/tuple.dart';
 
-import '../structs/color.dart';
 import '../structs/quaternion.dart';
+import '../structs/shader.dart';
 import '../structs/vector_3.dart';
 import 'scene_object.dart';
 
 class Sphere extends SceneObject {
 
-  @override Color color;
+  @override Shader shader;
   @override Vector3 position;
   @override Quaternion rotation;
 
@@ -19,13 +19,13 @@ class Sphere extends SceneObject {
     required this.position,
     required this.rotation,
     required this.radius,
-    required this.color,
+    required this.shader,
   });
 
   factory Sphere.fromMap(Map sphere) => Sphere(
     rotation: Quaternion.fromMap(sphere['rotation']),
     position: Vector3.fromMap(sphere['position']),
-    color: Color.fromHex(sphere['color']),
+    shader: Shader.fromMap(sphere['shader']),
     radius: sphere['radius'] ?? 1,
   );
 

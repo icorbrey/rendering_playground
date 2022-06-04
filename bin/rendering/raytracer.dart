@@ -23,9 +23,13 @@ class Raytracer {
 
         var object = closest.item1;
         var intersection = closest.item2;
-        var color = object?.color ?? backgroundColor;
 
-        scene.canvas.paintPixel(x, y, _calculateLitColor(object, intersection, color));
+        if (object == null) {
+          scene.canvas.paintPixel(x, y, backgroundColor);
+        }
+        else {
+          scene.canvas.paintPixel(x, y, _calculateLitColor(object, intersection));
+        }
       }
     }
   }
@@ -57,8 +61,8 @@ class Raytracer {
     return Tuple2(closestObject, intersection);
   }
 
-  Color _calculateLitColor(SceneObject? object, Vector3 intersection, Color baseColor) =>
-    baseColor * scene.lights
+  Color _calculateLitColor(SceneObject object, Vector3 intersection) =>
+    object.shader.color * scene.lights
       .map((l) => l.getPointIntensity(object, intersection))
       .reduce((x, y) => x + y);
 

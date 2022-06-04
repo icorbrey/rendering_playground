@@ -1,7 +1,7 @@
 import 'package:tuple/tuple.dart';
 
-import '../structs/color.dart';
 import '../structs/quaternion.dart';
+import '../structs/shader.dart';
 import '../structs/vector_3.dart';
 import 'scene_object.dart';
 
@@ -9,7 +9,7 @@ class Camera extends SceneObject {
 
   @override Vector3 position;
   @override Quaternion rotation;
-  @override Color color;
+  @override Shader shader;
 
   final num viewportWidth;
   final num viewportHeight;
@@ -22,7 +22,7 @@ class Camera extends SceneObject {
     required this.viewportWidth,
     required this.viewportHeight,
   })
-    : color = Color.black();
+    : shader = Shader.none();
 
   factory Camera.fromMap(Map camera) => Camera(
     rotation: Quaternion.fromMap(camera['rotation']),

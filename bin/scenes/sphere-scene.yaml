@@ -25,20 +25,28 @@ objects:
 
   - type: sphere
     position: { x: 0, y: -1, z: 3 }
-    color: '#ff0000'
     radius: 1
+    shader:
+      color: '#ff0000'
+      specular: 500
 
   - type: sphere
     position: { x: 2, y: 0, z: 4 }
-    color: '#00ff00'
     radius: 1
+    shader:
+      color: '#00ff00'
+      specular: 500
 
   - type: sphere
     position: { x: -2, y: 0, z: 4 }
-    color: '#0000ff'
     radius: 1
+    shader:
+      color: '#0000ff'
+      specular: 10
 
   - type: sphere
     position: { x: 0, y: -5001, z: 0 }
-    color: '#ffff00'
     radius: 5000
+    shader:
+      color: '#ffff00'
+      specular: 1000

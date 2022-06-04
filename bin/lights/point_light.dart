@@ -28,10 +28,7 @@ class PointLight extends SceneLight {
     var normal = object.getNormal(intersection);
     var direction = position - object.position;
 
-    if (0 < normal ^ direction) {
-      return intensity * (normal ^ direction) / (normal.magnitude * direction.magnitude);
-    } 
-
-    return 0;
+    return getDiffusionIntensity(normal, direction)
+      + getSpecularIntensity(object.shader, normal, direction, direction * -1);
   }
 }
