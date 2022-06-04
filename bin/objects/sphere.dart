@@ -22,6 +22,13 @@ class Sphere extends SceneObject {
     required this.color,
   });
 
+  factory Sphere.fromMap(Map sphere) => Sphere(
+    rotation: Quaternion.fromMap(sphere['rotation']),
+    position: Vector3.fromMap(sphere['position']),
+    color: Color.fromHex(sphere['color']),
+    radius: sphere['radius'] ?? 1,
+  );
+
   @override
   Tuple2<num, num> intersect(Vector3 origin, Vector3 viewportIntersection) {
 

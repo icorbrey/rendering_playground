@@ -20,6 +20,11 @@ class Vector2 {
   const Vector2.negativeInfinity()
     : this(double.negativeInfinity, double.negativeInfinity);
 
+  factory Vector2.fromMap(Map? map) =>
+    map != null
+      ? Vector2(map['x'], map['y'])
+      : Vector2.zero();
+
   Vector2 operator*(num other) =>
     Vector2(x * other, y * other);
 

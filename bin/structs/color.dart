@@ -21,7 +21,10 @@ class Color {
   Color.magenta() : this(255, 0, 255);
   Color.white() : this(255, 255, 255);
 
-  factory Color.fromHex(String hex) {
+  factory Color.fromHex(String? hex) {
+    if (hex == null) {
+      return Color.black();
+    }
     int parseHex(String hex) {
       final buffer = StringBuffer();
       buffer.write(hex);

@@ -23,6 +23,15 @@ class Vector3 {
   const Vector3.negativeInfinity()
     : this(double.negativeInfinity, double.negativeInfinity, double.negativeInfinity);
 
+  factory Vector3.fromMap(Map? vector) =>
+    vector != null
+      ? Vector3(
+        vector['x'], 
+        vector['y'], 
+        vector['z'],
+      )
+      : Vector3.zero();
+
   Vector3 operator*(num other) =>
     Vector3(x * other, y * other, z * other);
 

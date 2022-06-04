@@ -24,6 +24,14 @@ class Camera extends SceneObject {
   })
     : color = Color.black();
 
+  factory Camera.fromMap(Map camera) => Camera(
+    rotation: Quaternion.fromMap(camera['rotation']),
+    position: Vector3.fromMap(camera['position']),
+    viewportHeight: camera['viewport']['height'],
+    viewportDepth: camera['viewport']['depth'],
+    viewportWidth: camera['viewport']['width'],
+  );
+
   @override
   Tuple2<num, num> intersect(Vector3 origin, Vector3 viewportIntersection) =>
     Tuple2(double.infinity, double.infinity);

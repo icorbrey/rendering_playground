@@ -13,6 +13,11 @@ class Quaternion {
 
   const Quaternion(this.w, this.x, this.y, this.z);
 
+  factory Quaternion.fromMap(Map? map) =>
+    map != null
+      ? Quaternion(map['w'], map['x'], map['y'], map['z'])
+      : Quaternion.identity();
+
   factory Quaternion.fromEulerAngles(EulerAngles eulerAngles) {
 
     var cr = cos(eulerAngles.roll * 0.5);

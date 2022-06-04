@@ -27,6 +27,11 @@ class ImageCanvas implements Canvas {
       assert(0 <= height),
       _image = img.Image(width, height);
 
+  factory ImageCanvas.fromMap(Map canvas) => ImageCanvas(
+    height: canvas['height'],
+    width: canvas['width'],
+  );
+
   @override
   void paintPixel(int x, int y, Color color) {
 

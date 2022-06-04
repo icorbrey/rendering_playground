@@ -11,4 +11,9 @@ class PointLight extends SceneLight {
     required this.intensity,
     required this.position,
   });
+
+  factory PointLight.fromMap(Map light) => PointLight(
+    position: Vector3.fromMap(light['position']),
+    intensity: light['intensity'],
+  );
 }

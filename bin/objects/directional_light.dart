@@ -11,4 +11,9 @@ class DirectionalLight extends SceneLight {
     required this.intensity,
     required this.direction,
   });
+
+  factory DirectionalLight.fromMap(Map light) => DirectionalLight(
+    direction: Vector3.fromMap(light['position']),
+    intensity: light['intensity'],
+  );
 }

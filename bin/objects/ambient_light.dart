@@ -7,4 +7,8 @@ class AmbientLight extends SceneLight {
   AmbientLight({
     required this.intensity,
   });
+
+  factory AmbientLight.fromMap(Map light) => AmbientLight(
+    intensity: light['intensity']
+  );
 }
