@@ -8,6 +8,19 @@ camera:
     height: 1.080
     depth: 1.000
 
+lights:
+
+  - type: ambient
+    intensity: 0.2
+
+  - type: point
+    intensity: 0.6
+    position: { x: 2, y: 1, z: 0 }
+
+  - type: directional
+    intensity: 0.2
+    direction: { x: 1, y: 4, z: 4 }
+
 objects:
 
   - type: sphere

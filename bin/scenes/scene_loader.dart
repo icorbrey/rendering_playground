@@ -2,7 +2,11 @@ import 'dart:io';
 
 import 'package:yaml/yaml.dart';
 
+import '../objects/ambient_light.dart';
 import '../objects/camera.dart';
+import '../objects/directional_light.dart';
+import '../objects/point_light.dart';
+import '../objects/scene_light.dart';
 import '../objects/scene_object.dart';
 import '../objects/sphere.dart';
 import '../rendering/image_canvas.dart';
@@ -48,6 +52,37 @@ class SceneLoader {
       }
     }
     return objects;
+  }
+
+  List<SceneLight> _loadLights(Map yaml) {
+    List<SceneLight> lights = [];
+
+    for (var light in yaml['lights']) {
+      switch (light['type']) {
+
+        case 'ambient':
+          lights.add(AmbientLight(
+            intensity: light['intensity'],
+          ));
+          break;
+
+        case 'point':
+          lights.add(PointLight(
+            position: _toVector3(light['position']),
+            intensity: light['intensity'],
+          ));
+          break;
+
+        case 'directional':
+          lights.add(DirectionalLight(
+            direction: _toVector3(light['direction']),
+            intensity: light['intensity'],
+          ));
+          break;
+      }
+    }
+    
+    return lights;
   }
 
   Vector3 _toVector3(Map? v) =>
