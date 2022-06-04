@@ -1,3 +1,5 @@
+import 'package:tuple/tuple.dart';
+
 import '../scenes/scene.dart';
 import '../objects/scene_object.dart';
 import '../structs/color.dart';
@@ -15,14 +17,20 @@ class Raytracer {
   void render() {
     for (var x = scene.canvas.minX; x < scene.canvas.maxX; x++) {
       for (var y = scene.canvas.minY; y < scene.canvas.maxY; y++) {
+
         var viewportCoord = _toViewportCoord(Vector2(x, y));
-        var object = _getClosestObject(viewportCoord);
-        scene.canvas.paintPixel(x, y, object?.color ?? backgroundColor);
+        var closest = _getClosestIntersection(viewportCoord);
+
+        var object = closest.item1;
+        var intersection = closest.item2;
+        var color = object?.color ?? backgroundColor;
+
+        scene.canvas.paintPixel(x, y, _calculateLitColor(object, intersection, color));
       }
     }
   }
 
-  SceneObject? _getClosestObject(Vector3 viewportIntersection) {
+  Tuple2<SceneObject?, Vector3> _getClosestIntersection(Vector3 viewportIntersection) {
 
     num closestIntersection = double.infinity;
     SceneObject? closestObject;
@@ -44,8 +52,15 @@ class Raytracer {
       }
     }
 
-    return closestObject;
+    var intersection = scene.camera.position + viewportIntersection * closestIntersection;
+
+    return Tuple2(closestObject, intersection);
   }
+
+  Color _calculateLitColor(SceneObject? object, Vector3 intersection, Color baseColor) =>
+    baseColor * scene.lights
+      .map((l) => l.getPointIntensity(object, intersection))
+      .reduce((x, y) => x + y);
 
   Vector3 _toViewportCoord(Vector2 canvasCoord) => Vector3(
     canvasCoord.x * (scene.camera.viewportWidth / scene.canvas.width),

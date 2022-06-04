@@ -1,3 +1,5 @@
+import '../structs/vector_3.dart';
+import '../objects/scene_object.dart';
 import 'scene_light.dart';
 
 class AmbientLight extends SceneLight {
@@ -11,4 +13,9 @@ class AmbientLight extends SceneLight {
   factory AmbientLight.fromMap(Map light) => AmbientLight(
     intensity: light['intensity']
   );
+
+  @override
+  num getPointIntensity(SceneObject? object, Vector3 intersection) {
+    return intensity;
+  }
 }

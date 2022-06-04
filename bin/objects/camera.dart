@@ -35,4 +35,8 @@ class Camera extends SceneObject {
   @override
   Tuple2<num, num> intersect(Vector3 origin, Vector3 viewportIntersection) =>
     Tuple2(double.infinity, double.infinity);
+
+  @override
+  Vector3 getNormal(Vector3 intersection) =>
+    Vector3.zero();
 }

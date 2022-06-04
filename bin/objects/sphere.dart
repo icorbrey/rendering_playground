@@ -49,4 +49,8 @@ class Sphere extends SceneObject {
 
     return Tuple2(near, far);
   }
+
+  @override
+  Vector3 getNormal(Vector3 intersection) =>
+    (intersection - position).normalized;
 }

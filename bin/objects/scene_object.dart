@@ -10,5 +10,6 @@ abstract class SceneObject {
   Quaternion get rotation;
   Color get color;
 
+  Vector3 getNormal(Vector3 intersection);
   Tuple2<num, num> intersect(Vector3 origin, Vector3 viewportIntersection);
 }

@@ -45,16 +45,10 @@ class Color {
   int toInt() =>
     img.getColor(red, green, blue);
 
-  Color operator*(double other) => Color(
-    other * red as int,
-    other * green as int,
-    other * blue as int,
-  );
-
-  Color operator+(Color other) => Color(
-    other.red + red,
-    other.green + green,
-    other.blue + blue,
+  Color operator*(num other) => Color(
+    (other * red).round(),
+    (other * green).round(),
+    (other * blue).round(),
   );
 
   @override
