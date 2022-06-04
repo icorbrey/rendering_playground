@@ -21,6 +21,24 @@ class Color {
   Color.magenta() : this(255, 0, 255);
   Color.white() : this(255, 255, 255);
 
+  factory Color.fromHex(String hex) {
+    int parseHex(String hex) {
+      final buffer = StringBuffer();
+      buffer.write(hex);
+      return int.parse(buffer.toString(), radix: 16);
+    }
+    var nums = hex
+      .replaceFirst('#', '')
+      .split('')
+      .map(parseHex)
+      .toList();
+    return Color(
+      nums[0] * 16 + nums[1],
+      nums[2] * 16 + nums[3],
+      nums[4] * 16 + nums[5],
+    );
+  }
+
   int toInt() =>
     img.getColor(red, green, blue);
 

@@ -13,7 +13,7 @@ class Sphere extends SceneObject {
   @override Vector3 position;
   @override Quaternion rotation;
 
-  double radius;
+  num radius;
 
   Sphere({
     required this.position,

@@ -1,0 +1,31 @@
+canvas:
+  width: 1920
+  height: 1080
+
+camera:
+  viewport:
+    width: 1.920
+    height: 1.080
+    depth: 1.000
+
+objects:
+
+  - type: sphere
+    position: { x: 0, y: -1, z: 3 }
+    color: '#ff0000'
+    radius: 1
+
+  - type: sphere
+    position: { x: 2, y: 0, z: 4 }
+    color: '#00ff00'
+    radius: 1
+
+  - type: sphere
+    position: { x: -2, y: 0, z: 4 }
+    color: '#0000ff'
+    radius: 1
+
+  - type: sphere
+    position: { x: 0, y: -5001, z: 0 }
+    color: '#ffff00'
+    radius: 5000

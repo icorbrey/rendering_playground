@@ -10,6 +10,7 @@ dependencies:
   quiver:
   image:
   tuple:
+  yaml:
 
 dev_dependencies:
   lints: ^1.0.0

@@ -6,10 +6,10 @@ import 'euler_angles.dart';
 
 class Quaternion {
   
-  final double w;
-  final double x;
-  final double y;
-  final double z;
+  final num w;
+  final num x;
+  final num y;
+  final num z;
 
   const Quaternion(this.w, this.x, this.y, this.z);
 

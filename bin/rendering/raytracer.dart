@@ -1,5 +1,4 @@
-import 'canvas.dart';
-import '../objects/camera.dart';
+import '../scenes/scene.dart';
 import '../objects/scene_object.dart';
 import '../structs/color.dart';
 import '../structs/vector_2.dart';
@@ -7,24 +6,18 @@ import '../structs/vector_3.dart';
 
 class Raytracer {
 
-  final Canvas canvas;
-  final Camera camera;
-  final List<SceneObject> objects;
+  final Scene scene;
 
   final backgroundColor = Color.white();
 
-  Raytracer({
-    required this.canvas,
-    required this.camera,
-    required this.objects,
-  });
+  Raytracer(this.scene);
 
   void render() {
-    for (var x = canvas.minX; x < canvas.maxX; x++) {
-      for (var y = canvas.minY; y < canvas.maxY; y++) {
+    for (var x = scene.canvas.minX; x < scene.canvas.maxX; x++) {
+      for (var y = scene.canvas.minY; y < scene.canvas.maxY; y++) {
         var viewportCoord = _toViewportCoord(Vector2(x, y));
         var object = _getClosestObject(viewportCoord);
-        canvas.paintPixel(x, y, object?.color ?? backgroundColor);
+        scene.canvas.paintPixel(x, y, object?.color ?? backgroundColor);
       }
     }
   }
@@ -34,9 +27,9 @@ class Raytracer {
     num closestIntersection = double.infinity;
     SceneObject? closestObject;
 
-    for (var object in objects) {
+    for (var object in scene.objects) {
 
-      var intersections = object.intersect(camera.position, viewportIntersection);
+      var intersections = object.intersect(scene.camera.position, viewportIntersection);
       var near = intersections.item1;
       var far = intersections.item2;
 
@@ -55,11 +48,11 @@ class Raytracer {
   }
 
   Vector3 _toViewportCoord(Vector2 canvasCoord) => Vector3(
-    canvasCoord.x * (camera.viewportWidth / canvas.width),
-    canvasCoord.y * (camera.viewportHeight / canvas.height),
-    camera.viewportDepth
+    canvasCoord.x * (scene.camera.viewportWidth / scene.canvas.width),
+    canvasCoord.y * (scene.camera.viewportHeight / scene.canvas.height),
+    scene.camera.viewportDepth
   );
 
   bool _isInRange(num distance) =>
-    camera.viewportDepth <= distance && distance < double.infinity;
+    scene.camera.viewportDepth <= distance && distance < double.infinity;
 }
