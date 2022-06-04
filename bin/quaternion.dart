@@ -11,12 +11,7 @@ class Quaternion {
   final double y;
   final double z;
 
-  const Quaternion({
-    required this.w,
-    required this.x,
-    required this.y,
-    required this.z,
-  });
+  const Quaternion(this.w, this.x, this.y, this.z);
 
   factory Quaternion.fromEulerAngles(EulerAngles eulerAngles) {
 
@@ -28,28 +23,23 @@ class Quaternion {
     var sy = sin(eulerAngles.yaw * 0.5);
 
     return Quaternion(
-      w: cr * cp * cy + sr * sp * sy,
-      x: sr * cp * cy - cr * sp * sy,
-      y: cr * sp * cy + sr * cp * sy,
-      z: cr * cp * sy - sr * sp * cy,
+      cr * cp * cy + sr * sp * sy,
+      sr * cp * cy - cr * sp * sy,
+      cr * sp * cy + sr * cp * sy,
+      cr * cp * sy - sr * sp * cy,
     );
   }
 
-  const Quaternion.identity() : this(
-    w: 1,
-    x: 0,
-    y: 0,
-    z: 0,
-  );
+  const Quaternion.identity() : this(1, 0, 0, 0);
 
   EulerAngles get eulerAngles =>
     EulerAngles.fromQuaternion(this);
 
-  Quaternion operator+(Quaternion other) => Quaternion(
-    w: other.w + w, 
-    x: other.x + x, 
-    y: other.y + y, 
-    z: other.z + z,
+  Quaternion operator*(Quaternion other) => Quaternion(
+    other.w * w,
+    other.x + x,
+    other.y + y,
+    other.z + z,
   );
 
   @override

@@ -40,8 +40,6 @@ class Raytracer {
       var near = intersections.item1;
       var far = intersections.item2;
 
-      
-
       if (_isInRange(near) && near < closestIntersection) {
         closestIntersection = near;
         closestObject = object;
